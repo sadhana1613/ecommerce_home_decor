@@ -1,0 +1,47 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: ./frontecomm
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    container_name: saya-frontend
+    environment:
+      - WATCHPACK_POLLING=true
+    networks:
+      - mern-stack-networks
+    volumes:
+      - ./frontecomm:/src/App
+    depends_on:
+      - backend
+  backend:
+    build:
+      context: ./ecommerceapi
+      dockerfile: Dockerfile
+    ports:
+      - '5000:5000'
+    container_name: saya-backend
+    environment:
+      - WATCHPACK_POLLING=true
+    networks:
+      - mern-stack-networks
+    volumes:
+      - ./ecommerceapi:/home/app
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+    container_name: mongo-container
+    networks:
+      - mern-stack-networks
+    volumes:
+      - mongoData:/data/db
+
+networks:
+  mern-stack-networks:
+
+volumes:
+  mongoData:
