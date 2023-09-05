@@ -28,6 +28,8 @@ jobs:
         uses: mr-smithers-excellent/docker-build-push@v4
         with:
      
+          context: .
+          path: ./ecommerceapi/
           image: ecommerce_home_decor-frontend
           registry: docker.io
           push: true
