@@ -30,9 +30,9 @@ jobs:
      
           context: .
           path: ./ecommerceapi/
-          image: ecommerce_home_decor-frontend
+          image: ecommerce_home_decor-backend
           registry: docker.io
-          tags: rutu11desai/home_decor:latest
+          tags: rutu11desai/home_decor_website:latest
           push: true
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
